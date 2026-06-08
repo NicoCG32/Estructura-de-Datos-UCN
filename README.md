@@ -66,6 +66,7 @@ Las ayudantías del semestre se encuentran organizadas en las siguientes carpeta
 - **[Ayudantí­a 6](Ayudantía%206/README.md)** - Recorridos de árboles binarios
 - **[Ayudantía 7](Ayudantía%207/README.md)** - Heaps y HeapSort
 - **[Ayudantía 8](Ayudantía%208/README.md)** - Árboles AVL
+- **[Ayudantía 9](Ayudantía%209/README.md)** - Algoritmos recursivos e iterativos con árboles
 
 ## Temario
 
