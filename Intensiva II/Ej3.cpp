@@ -36,8 +36,33 @@ TreeNode* crearArbolEjercicio3() {
 }
 
 int sumaRangoABB(TreeNode* root, int low, int high) {
-    // Implementar aquí.
-    return 0;
+    if (root == nullptr || low > high) {
+        return 0;
+    }
+
+    stack<TreeNode*> pila;
+    pila.push(root);
+
+    int suma = 0;
+
+    while (!pila.empty()) {
+        TreeNode* actual = pila.top();
+        pila.pop();
+
+        if (actual->val >= low && actual->val <= high && actual->val % 5 != 0) {
+            suma = suma + actual->val;
+        }
+
+        if (actual->left != nullptr && actual->val > low) {
+            pila.push(actual->left);
+        }
+
+        if (actual->right != nullptr && actual->val < high) {
+            pila.push(actual->right);
+        }
+    }
+
+    return suma;
 }
 
 int main() {

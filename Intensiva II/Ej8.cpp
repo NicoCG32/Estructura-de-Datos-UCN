@@ -36,8 +36,54 @@ void agregarArco(EdgeNode*& head, int source, int destination) {
 }
 
 bool ordenCursos(EdgeNode* head, int numCursos, vector<int>& orden) {
-    // Implementar aquí.
-    return false;
+    orden.clear();
+
+    if (numCursos < 0) {
+        return false;
+    }
+
+    vector<vector<int> > adyacencia(numCursos);
+    vector<int> gradoEntrada(numCursos, 0);
+
+    EdgeNode* cursor = head;
+
+    while (cursor != nullptr) {
+        int origen = cursor->source;
+        int destino = cursor->destination;
+
+        if (origen >= 0 && origen < numCursos && destino >= 0 && destino < numCursos) {
+            adyacencia[origen].push_back(destino);
+            gradoEntrada[destino]++;
+        }
+
+        cursor = cursor->next;
+    }
+
+    queue<int> cola;
+
+    for (int i = 0; i < numCursos; i++) {
+        if (gradoEntrada[i] == 0) {
+            cola.push(i);
+        }
+    }
+
+    while (!cola.empty()) {
+        int actual = cola.front();
+        cola.pop();
+
+        orden.push_back(actual);
+
+        for (int i = 0; i < static_cast<int>(adyacencia[actual].size()); i++) {
+            int vecino = adyacencia[actual][i];
+            gradoEntrada[vecino]--;
+
+            if (gradoEntrada[vecino] == 0) {
+                cola.push(vecino);
+            }
+        }
+    }
+
+    return static_cast<int>(orden.size()) == numCursos;
 }
 
 int main() {

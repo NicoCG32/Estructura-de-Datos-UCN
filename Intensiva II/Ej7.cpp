@@ -36,9 +36,71 @@ void agregarArco(EdgeNode*& head, int source, int destination) {
 }
 
 vector<int> caminoListaArcos(EdgeNode* head, int n, int origen, int destino) {
-    // Implementar aquí.
     vector<int> camino;
-    return camino;
+
+    if (n <= 0 || origen < 0 || origen >= n || destino < 0 || destino >= n) {
+        return camino;
+    }
+
+    if (origen == destino) {
+        camino.push_back(origen);
+        return camino;
+    }
+
+    vector<int> visitado(n, 0);
+    vector<int> padre(n, -1);
+    queue<int> cola;
+
+    cola.push(origen);
+    visitado[origen] = 1;
+
+    while (!cola.empty()) {
+        int actual = cola.front();
+        cola.pop();
+
+        if (actual == destino) {
+            break;
+        }
+
+        EdgeNode* cursor = head;
+
+        while (cursor != nullptr) {
+            int vecino = -1;
+
+            if (cursor->source == actual) {
+                vecino = cursor->destination;
+            } else if (cursor->destination == actual) {
+                vecino = cursor->source;
+            }
+
+            if (vecino >= 0 && vecino < n && visitado[vecino] == 0) {
+                visitado[vecino] = 1;
+                padre[vecino] = actual;
+                cola.push(vecino);
+            }
+
+            cursor = cursor->next;
+        }
+    }
+
+    if (visitado[destino] == 0) {
+        return camino;
+    }
+
+    int cursorCamino = destino;
+
+    while (cursorCamino != -1) {
+        camino.push_back(cursorCamino);
+        cursorCamino = padre[cursorCamino];
+    }
+
+    vector<int> caminoOrdenado;
+
+    for (int i = static_cast<int>(camino.size()) - 1; i >= 0; i--) {
+        caminoOrdenado.push_back(camino[i]);
+    }
+
+    return caminoOrdenado;
 }
 
 int main() {

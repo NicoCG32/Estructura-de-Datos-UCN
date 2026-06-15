@@ -69,6 +69,7 @@ Las ayudantías del semestre se encuentran organizadas en las siguientes carpeta
 - **[Ayudantía 7](Ayudantía%207/README.md)** - Heaps y HeapSort
 - **[Ayudantía 8](Ayudantía%208/README.md)** - Árboles AVL
 - **[Ayudantía 9](Ayudantía%209/README.md)** - Algoritmos recursivos e iterativos con árboles
+- **[Ayudantía 10](Ayudantía%2010/README.md)** - Grafos: representaciones, BFS y DFS
 - **[Intensiva II](Intensiva%20II/README.md)** - Ruta seleccionada para la intensiva PP2
 
 ## Temario
