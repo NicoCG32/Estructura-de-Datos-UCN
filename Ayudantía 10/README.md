@@ -8,6 +8,7 @@
 - [Grafo dirigido de referencia](#grafo-dirigido-de-referencia)
 - [Grafo no dirigido de referencia](#grafo-no-dirigido-de-referencia)
 - [Referencias de práctica](#referencias-de-práctica)
+- [Códigos base](#códigos-base)
 - [Problema 1: lista de arcos hacia lista y matriz de adyacencia](#problema-1-lista-de-arcos-hacia-lista-y-matriz-de-adyacencia)
 - [Problema 2: consultas y grados con matriz de adyacencia](#problema-2-consultas-y-grados-con-matriz-de-adyacencia)
 - [Problema 3: BFS y distancias mínimas en grafos no ponderados](#problema-3-bfs-y-distancias-mínimas-en-grafos-no-ponderados)
@@ -152,6 +153,17 @@ Los ejercicios están inspirados en patrones clásicos de grafos. No son copias 
 - [GeeksforGeeks - Breadth First Search or BFS for a Graph](https://www.geeksforgeeks.org/dsa/breadth-first-search-or-bfs-for-a-graph/): repaso de BFS.
 - [GeeksforGeeks - Depth First Search or DFS for a Graph](https://www.geeksforgeeks.org/dsa/depth-first-search-or-dfs-for-a-graph/): repaso de DFS.
 - [GeeksforGeeks - Graph and its representations](https://www.geeksforgeeks.org/dsa/graph-and-its-representations/): comparación de representaciones.
+
+## Códigos base
+
+Cada ejercicio tiene una plantilla compilable con datos de prueba cargados y funciones marcadas con `Implementar aquí`.
+
+- [Ej1.cpp](Ej1.cpp): conversión desde lista de arcos hacia lista y matriz de adyacencia.
+- [Ej2.cpp](Ej2.cpp): consultas y grados sobre matriz de adyacencia.
+- [Ej3.cpp](Ej3.cpp): BFS y distancias mínimas.
+- [Ej4.cpp](Ej4.cpp): DFS recursivo, DFS iterativo y existencia de camino.
+- [Ej5.cpp](Ej5.cpp): componentes conexas y ciclos en grafo no dirigido.
+- [Ej6.cpp](Ej6.cpp): vértices en algún camino usando BFS y DFS.
 
 ---
 
