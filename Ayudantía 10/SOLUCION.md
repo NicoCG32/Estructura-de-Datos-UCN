@@ -516,34 +516,33 @@ int contarComponentes(const vector<vector<int>>& adj) {
     return componentes;
 }
 
-bool tieneCicloNoDirigido(const vector<vector<int>>& adj) {
-    int n = static_cast<int>(adj.size());
-    vector<bool> visited(n, false);
+ool tieneCiclo(int n, vector<vector<int>>& grafo) {
+    vector<bool> visitado(n, false);
 
-    for (int start = 0; start < n; start++) {
-        if (visited[start]) {
-            continue;
-        }
+    // Se revisan todos los nodos por si el grafo no es conexo
+    for (int inicio = 0; inicio < n; inicio++) {
 
-        stack<pair<int, int>> st;
-        st.push({start, -1});
-        visited[start] = true;
+        if (!visitado[inicio]) {
+            stack<pair<int, int>> pila;
 
-        while (!st.empty()) {
-            int u = st.top().first;
-            int parent = st.top().second;
-            st.pop();
+            // pair<nodo_actual, padre>
+            pila.push({inicio, -1});
+            visitado[inicio] = true;
 
-            for (int v : adj[u]) {
-                if (!verticeValido(v, n)) {
-                    continue;
-                }
+            while (!pila.empty()) {
+                int nodo = pila.top().first;
+                int padre = pila.top().second;
+                pila.pop();
 
-                if (!visited[v]) {
-                    visited[v] = true;
-                    st.push({v, u});
-                } else if (v != parent) {
-                    return true;
+                for (int vecino : grafo[nodo]) {
+
+                    if (!visitado[vecino]) {
+                        visitado[vecino] = true;
+                        pila.push({vecino, nodo});
+                    }
+                    else if (vecino != padre) {
+                        return true;
+                    }
                 }
             }
         }

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -54,9 +55,36 @@ EdgeNode* crearListaArcosReferencia() {
 vector<vector<int> > construirListaAdy(EdgeNode* edges, int n, bool directed) {
     vector<vector<int> > adj;
 
-    // Implementar aquí.
-    // Recorrer la lista de arcos y llenar adj.
-    // Si directed == false, agregar también el arco inverso.
+    if (n <= 0) {
+        return adj;
+    }
+
+    adj.resize(n);
+
+    // Recorrido de LinkedList de arcos.
+    // Cada nodo de la lista representa un arco source -> destination.
+    EdgeNode* actual = edges;
+
+    while (actual != nullptr) {
+        int u = actual->source;
+        int v = actual->destination;
+
+        if (u >= 0 && u < n && v >= 0 && v < n) {
+            adj[u].push_back(v);
+
+            // Si el grafo no es dirigido, el arco también sirve al revés.
+            if (!directed) {
+                adj[v].push_back(u);
+            }
+        }
+
+        actual = actual->next;
+    }
+
+    // Se ordena cada lista de vecinos para recorrer en orden ascendente.
+    for (int i = 0; i < n; i++) {
+        sort(adj[i].begin(), adj[i].end());
+    }
 
     return adj;
 }
@@ -64,9 +92,31 @@ vector<vector<int> > construirListaAdy(EdgeNode* edges, int n, bool directed) {
 vector<vector<int> > construirMatrizAdy(EdgeNode* edges, int n, bool directed) {
     vector<vector<int> > matrix;
 
-    // Implementar aquí.
-    // Recorrer la lista de arcos y marcar matrix[u][v] = 1.
-    // Si directed == false, marcar también matrix[v][u] = 1.
+    if (n <= 0) {
+        return matrix;
+    }
+
+    matrix.resize(n, vector<int>(n, 0));
+
+    // Recorrido de LinkedList de arcos.
+    // En matriz, matrix[u][v] indica si existe el arco u -> v.
+    EdgeNode* actual = edges;
+
+    while (actual != nullptr) {
+        int u = actual->source;
+        int v = actual->destination;
+
+        if (u >= 0 && u < n && v >= 0 && v < n) {
+            matrix[u][v] = 1;
+
+            // Si el grafo no es dirigido, se marca también v -> u.
+            if (!directed) {
+                matrix[v][u] = 1;
+            }
+        }
+
+        actual = actual->next;
+    }
 
     return matrix;
 }

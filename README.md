@@ -71,6 +71,7 @@ Las ayudantías del semestre se encuentran organizadas en las siguientes carpeta
 - **[Ayudantía 9](Ayudantía%209/README.md)** - Algoritmos recursivos e iterativos con árboles
 - **[Ayudantía 10](Ayudantía%2010/README.md)** - Grafos: representaciones, BFS y DFS
 - **[Intensiva II](Intensiva%20II/README.md)** - Ruta seleccionada para la intensiva PP2
+- **[Apunte final PP2](Apunte%20final%20PP2/README.md)** - Recorridos genéricos en árboles y grafos
 
 ## Temario
 
